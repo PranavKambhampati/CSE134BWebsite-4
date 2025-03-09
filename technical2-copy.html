@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skills & Experiences</title>
+    <title>Techincal2</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stylesheets/technical2-style.css">
     <link rel="stylesheet" href="stylesheets/navbar-style.css">
@@ -101,29 +101,34 @@
         const initialData = {
             electricalengineering: {
                 skills: [
-                    { title: "System Verilog", image: "/assets/technical/system-verilog.png", description: "System Verilog to model circuits." },
-                    { title: "Bash", image: "/assets/technical/system-verilog.png", description: "Bash to write scripts for automation." },
-                    { title: "Altera Quartus", image: "/assets/technical/system-verilog.png", description: "Quartus for Verilog synthesis." },
-                    { title: "ModelSim", image: "/assets/technical/system-verilog.png", description: "ModelSim for Verilog simulation and debugging." },
-                    { title: "Arduino", image: "/assets/technical/system-verilog.png", description: "Build embedded systems using arduino microcontroller and additional sensors." },
-                    { title: "Lab Tools", image: "/assets/technical/system-verilog.png", description: "Proficiency using tools like solder irons, oscilloscopes, power supplies, breadboards and more." }
+                    { title: "System Verilog", image: "/assets/technical/system-verilog.png", description: "System Verilog to model circuits.", link:"https://www.systemverilog.io/" },
+                    { title: "Bash", image: "/assets/technical/bash.png", description: "Bash to write scripts for automation.", link:"#" },
+                    { title: "Altera Quartus", image: "/assets/technical/altera-quartus.png", description: "Quartus for Verilog synthesis.", link:"https://www.intel.com/content/www/us/en/software-kit/711791/intel-quartus-ii-web-edition-design-software-version-13-0sp1-for-windows.html" },
+                    { title: "ModelSim", image: "/assets/technical/modelsim.png", description: "ModelSim for Verilog simulation and debugging.", link:"https://www.intel.com/content/www/us/en/software-kit/750666/modelsim-intel-fpgas-standard-edition-software-version-20-1-1.html" },
+                    { title: "Arduino", image: "/assets/technical/arduino.png", description: "Build embedded systems using arduino microcontroller and additional sensors.", link:"https://www.arduino.cc/" },
+                    { title: "Lab Tools", image: "/assets/technical/labtools.png", description: "Proficiency using tools like solder irons, oscilloscopes, power supplies, breadboards and more.", link:"#" }
                 ],
                 experiences: [
-                    { title: "Rocket Avionics", image: "/assets/rocket.jpg", description: "Developed avionics systems for rockets." }
+                    { title: "Avionics Hardware Engineer @ RPL", image: "/assets/technical/rpl.png", description: "Worked to design and implement avionics hardware systems.", link: "https://www.rocketproplab.org/"},
+                    { title: "Test Engineering Intern @ NXP", image: "/assets/technical/nxp.png", description: "Testing Engineerning Stuff, emphasis on RUST and RUBY", link: "https://www.nxp.com/" }
                 ],
                 projects: [
-                    { title: "Custom PCB", image: "/assets/pcb.jpg", description: "Designed and built a custom PCB for sensor integration." }
+                    { title: "Custom Designed Microprocessor", image: "/assets/technical/microprocessor.png", description: "Designed a custom 9-bit assembly language and built microprocessor to support it.", link:"#" }
                 ]
             },
             computerscience: {
                 skills: [
-                    { title: "Python", image: "/assets/python.png", description: "Developed ETL pipelines at ASML." }
+                    { title: "Java", image: "/assets/technical/java.png", description: "Proficiency with the Java Programming Language and OOP.", link: "https://www.java.com/" },
+                    { title: "Python", image: "/assets/python.png", description: "Proficient with Python and applying it in ML contexts.", link: "https://www.python.org/" },
+                    { title: "Git", image: "/assets/technical/git.png", description: "Familiar with Git version control and using it for CI/CD Agile.", link: "https://www.github.com/" },
+                    { title: "SpringBoot", image: "/assets/technical/springboot.png", description: "Familiar with usign SpringBoot to develop WebApps with Java backend.", link: "https://spring.io/projects/spring-boot" }
+
                 ],
                 experiences: [
-                    { title: "Software Internship", image: "/assets/internship.jpg", description: "Worked on backend API development." }
+                    { title: "Software Engineering Intern @ ASML", image: "/assets/technical/asml.png", description: "Built a Python ETL tool to migrate data.", link: "https://www.asml.com/" }
                 ],
                 projects: [
-                    { title: "Survey Form", image: "/assets/survey.jpg", description: "Built a Google Forms-like survey app." }
+                    { title: "Python-Extract-Transform-Load", image: "/assets/technical/etl.png", description: "Migrate data to and from SQL, EXCEL, CSV, SharePoint and more.", link: "#"}
                 ]
             }
         };
