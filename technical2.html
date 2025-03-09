@@ -220,7 +220,7 @@
             }
             else {
                 console.log("No local data found.");
-                alert("No local data found.");
+                alert("No local data found. Please add data to local storage. Use the Load Remote button to fetch remote data.");
             }
         }
 
@@ -245,7 +245,7 @@
             xhr.send();
         }
 
-        document.addEventListener("DOMContentLoaded", fetchLocal);
+        //document.addEventListener("DOMContentLoaded", fetchLocal);
 
         document.getElementById("load-local-btn").addEventListener("click", fetchLocal);
         document.getElementById("load-remote-btn").addEventListener("click", fetchRemote);
