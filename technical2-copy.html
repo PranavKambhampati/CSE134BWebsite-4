@@ -64,23 +64,15 @@
             <h1>Electrical Engineering</h1>
             <section>
                 <h2>Skills</h2>
-                <project-card></project-card>
-                <project-card></project-card>
-                <project-card></project-card>
-                <project-card></project-card>
-                <project-card></project-card>
-                <project-card></project-card>
-    
+                <div id="electricalengineering-skills" class="card-container"></div>
             </section>
             <section>
                 <h2>Experiences</h2>
-                <project-card></project-card>
-                <project-card></project-card>
-                <project-card></project-card>
+                <div id="electricalengineering-experiences" class="card-container"></div>
             </section>
             <section>
                 <h2>Projects</h2>
-                <project-card></project-card>
+                <div id="electricalengineering-projects" class="card-container"></div>
             </section>
         </div>
 
@@ -89,20 +81,63 @@
             <h1>Computer Science</h1>
             <section>
                 <h2>Skills</h2>
-                <project-card></project-card>
+                <div id="computerscience-skills" class="card-container"></div>
             </section>
             <section>
                 <h2>Experiences</h2>
-                <project-card></project-card>
+                <div id="computerscience-experiences" class="card-container"></div>
             </section>
             <section>
                 <h2>Projects</h2>
-                <project-card></project-card>
+                <div id="computerscience-projects" class="card-container"></div>
             </section>
         </div>
     </div>
 
+    
+
     <!-- Note: everything is simply called a Project Card - in the future will work on separating the different types (skills, experiences, projects) -->
+    <script>
+        const initialData = {
+            electricalengineering: {
+                skills: [
+                    { title: "System Verilog", image: "/assets/technical/system-verilog.png", description: "System Verilog to model circuits." },
+                    { title: "Bash", image: "/assets/technical/system-verilog.png", description: "Bash to write scripts for automation." },
+                    { title: "Altera Quartus", image: "/assets/technical/system-verilog.png", description: "Quartus for Verilog synthesis." },
+                    { title: "ModelSim", image: "/assets/technical/system-verilog.png", description: "ModelSim for Verilog simulation and debugging." },
+                    { title: "Arduino", image: "/assets/technical/system-verilog.png", description: "Build embedded systems using arduino microcontroller and additional sensors." },
+                    { title: "Lab Tools", image: "/assets/technical/system-verilog.png", description: "Proficiency using tools like solder irons, oscilloscopes, power supplies, breadboards and more." }
+                ],
+                experiences: [
+                    { title: "Rocket Avionics", image: "/assets/rocket.jpg", description: "Developed avionics systems for rockets." }
+                ],
+                projects: [
+                    { title: "Custom PCB", image: "/assets/pcb.jpg", description: "Designed and built a custom PCB for sensor integration." }
+                ]
+            },
+            computerscience: {
+                skills: [
+                    { title: "Python", image: "/assets/python.png", description: "Developed ETL pipelines at ASML." }
+                ],
+                experiences: [
+                    { title: "Software Internship", image: "/assets/internship.jpg", description: "Worked on backend API development." }
+                ],
+                projects: [
+                    { title: "Survey Form", image: "/assets/survey.jpg", description: "Built a Google Forms-like survey app." }
+                ]
+            }
+        };
+        
+        // Save the initialData to localStorage under the key 'projectData'
+        localStorage.setItem('projectData', JSON.stringify(initialData));
+        
+        window.onload = function() {
+            if (!localStorage.getItem('projectData')) {
+                localStorage.setItem('projectData', JSON.stringify(initialData));
+            }
+        };
+        
+    </script>
     <script>
         class ProjectCard extends HTMLElement {
             constructor() {
@@ -110,19 +145,71 @@
             }
 
             connectedCallback() {
+                const title = this.getAttribute('title') || 'Untitled';
+                const image = this.getAttribute('image') || '/assets/default.png';
+                const description = this.getAttribute('description') || 'No description available.';
+                const link = this.getAttribute('link') || '#';
+
                 this.innerHTML = `
-                    <h2>Python-Extract-Transform-Load</h2>
+                    <h2>${title}</h2>
                     <picture>
-                        <img src="/assets/Python.png" alt="PETL project image">
+                        <img src="${image}" alt="${title}">
                     </picture>
-                    <p>A Python based ETL from my ASML internship.</p>
-                    <a href="#">Learn More</a>
+                    <p>${description}</p>
+                    <a href="${link}">Learn More</a>
                 `;
             }
         }
-
         customElements.define('project-card', ProjectCard);
+
+        function renderData(data){
+            const sections = ["skills", "experiences", "projects"];
+            const categories = ["electricalengineering", "computerscience"];
+
+            categories.forEach(category => {
+                sections.forEach(section => {
+                    const containerId = `${category}-${section}`;
+                    const container = document.getElementById(containerId);
+
+                    if(container){
+                        container.innerHTML = "";
+
+                        if(data[category] && data[category][section]){
+                            data[category][section].forEach(item => {
+                                const card = document.createElement('project-card');
+                                card.setAttribute('title', item.title);
+                                card.setAttribute('image', item.image);
+                                card.setAttribute('description', item.description);
+                                card.setAttribute('link', item.link);
+                                container.appendChild(card);
+                            });
+                        }
+                        else {
+                            container.innerHTML = "<p>No  ${section} data available.</p>";
+                        }
+                    }
+                });
+            });
+        }
+
+        function fetchLocal() {
+            const storedData = localStorage.getItem("projectData");
+            if(storedData) {
+                const parsedData = JSON.parse(storedData);
+                renderData(parsedData);
+            }
+            else {
+                console.log("No local data found.");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", fetchLocal);
+
+        document.getElementById("load-local-btn").addEventListener("click", fetchLocal);
+
+         
     </script>
+    
     <script src="scripts/themetoggle.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
