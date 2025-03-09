@@ -97,7 +97,7 @@
     
 
     <!-- Note: everything is simply called a Project Card - in the future will work on separating the different types (skills, experiences, projects) -->
-    <script>
+    <!-- <script>
         const initialData = {
             electricalengineering: {
                 skills: [
@@ -142,7 +142,7 @@
             }
         };
         
-    </script>
+    </script> -->
     <script>
         class ProjectCard extends HTMLElement {
             constructor() {
@@ -208,9 +208,31 @@
             }
         }
 
+        function fetchRemote() {
+            const binId = "67cde258ad19ca34f819410a";
+            const apiKey = "$2a$10$DBfBV2OfVhH2thOotmFXXeWVxjoN75KYpIcQIzg9DrRenBbjjoUqK";
+            const url = `https://api.jsonbin.io/v3/bins/${binId}`;
+
+            const xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    console.log(xhr.responseText);
+                    const data = JSON.parse(xhr.responseText);
+                    renderData(data.record);
+                }
+            };
+            // Not sure how to have the keys be hidden =(
+            xhr.open("GET",  "https://api.jsonbin.io/v3/b/67cde258ad19ca34f819410a/latest", true);
+            xhr.setRequestHeader("X-Master-Key", "$2a$10$DBfBV2OfVhH2thOotmFXXeWVxjoN75KYpIcQIzg9DrRenBbjjoUqK");
+
+            xhr.send();
+        }
+
         document.addEventListener("DOMContentLoaded", fetchLocal);
 
         document.getElementById("load-local-btn").addEventListener("click", fetchLocal);
+        document.getElementById("load-remote-btn").addEventListener("click", fetchRemote);
 
          
     </script>
