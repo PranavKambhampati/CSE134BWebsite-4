@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills & Experiences</title>
+    <style>
+        :root {
+            --bg-color: #f5f5f5;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --border-radius: 8px;
+            --padding: 16px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+        }
+        .column {
+            flex: 1;
+            padding: var(--padding);
+            overflow-y: auto;
+        }
+        .ee { background-color: #e3f2fd; }
+        .cs { background-color: #fce4ec; }
+        .section {
+            margin-bottom: 24px;
+        }
+        .project-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        project-card {
+            display: block;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: var(--padding);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: calc(50% - 8px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="column ee">
+            <h1>Electrical Engineering</h1>
+            <div class="section">
+                <h2>Skills</h2>
+                <div class="project-grid" id="ee-skills"></div>
+            </div>
+            <div class="section">
+                <h2>Experiences</h2>
+                <div class="project-grid" id="ee-experiences"></div>
+            </div>
+            <div class="section">
+                <h2>Projects</h2>
+                <div class="project-grid" id="ee-projects"></div>
+            </div>
+        </div>
+        <div class="column cs">
+            <h1>Computer Science</h1>
+            <div class="section">
+                <h2>Skills</h2>
+                <div class="project-grid" id="cs-skills"></div>
+            </div>
+            <div class="section">
+                <h2>Experiences</h2>
+                <div class="project-grid" id="cs-experiences"></div>
+            </div>
+            <div class="section">
+                <h2>Projects</h2>
+                <div class="project-grid" id="cs-projects"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        class ProjectCard extends HTMLElement {
+            constructor() {
+                super();
+            }
+
+            connectedCallback() {
+                const title = this.getAttribute('title') || 'Untitled';
+                const imgSrc = this.getAttribute('img') || '';
+                const imgAlt = this.getAttribute('alt') || 'Project image';
+                const description = this.getAttribute('description') || 'No description available.';
+                const link = this.getAttribute('link') || '#';
+
+                this.innerHTML = `
+                    <h2>${title}</h2>
+                    <picture>
+                        <img src="${imgSrc}" alt="${imgAlt}" width="100%">
+                    </picture>
+                    <p>${description}</p>
+                    <a href="${link}" target="_blank">Learn more</a>
+                `;
+            }
+        }
+        customElements.define('project-card', ProjectCard);
+
+        async function loadProjects() {
+            const response = await fetch('projects.json');
+            const data = await response.json();
+            
+            for (const project of data) {
+                const card = document.createElement('project-card');
+                card.setAttribute('title', project.title);
+                card.setAttribute('img', project.img);
+                card.setAttribute('alt', project.alt);
+                card.setAttribute('description', project.description);
+                card.setAttribute('link', project.link);
+                
+                document.getElementById(project.category).appendChild(card);
+            }
+        }
+        loadProjects();
+    </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+:root {
+    --primary-background-color: #3d3b49;
+    --general-text-color: #dbdad5;
+    --text-font-family: "Poppins", sans-serif;
+    --general-text-font-size: 1.3em;
+    --non-general-text-font-size: 1em;
+    --main-heading-font-size: 2.5em;
+    --secondary-heading-font-size: 2.2em;
+    --third-heading-font-size: 1.6em;
+    --fourth-heading-font-size: 1.5em;
+    --accent-color: color-mix(in srgb, rgb(157, 132, 226) 90%, black 10%);
+    --box-colors: rgb(255, 255, 255);
+
+    --card-bg: #f4f4f4;
+    --card-border: #ddd;
+    --text-color: #333;
+    --link-color: #007bff;
+}
+
+[data-theme="dark"] {
+    --primary-background-color: antiquewhite;
+    --general-text-color: #3d3b49;
+    --accent-color: color-mix(in srgb, rgb(77, 29, 207) 90%, black 10%);
+    --box-colors: color-mix(in srgb, rgb(77, 29, 207) 90%, black 10%);
+}
+
+button {
+    all: unset;
+    padding: 10px 20px; /* Add padding */
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border-radius: 5px; /* Rounded corners */
+    height: 15px;
+    margin-right: 45px;
+}
+
+body {
+    background-color: var(--primary-background-color, White);
+    color: var(--general-text-color, black);
+    font-family: var(--text-font-family, Arial);
+    padding-top: 5em;
+}
+
+
+h1 {
+    font-size: var(--main-heading-font-size, 2.5em);
+    color: var(--accent-color, #3d3b49);
+    font-family: "Poppins";
+}
+
+h2 {
+    font-size: var(--secondary-heading-font-size, 2.2em);
+    font-family: "Poppins";
+
+}
+
+h3 {
+    font-size: var(--third-heading-font-size, 1.6em);
+    font-family: "Poppins";
+
+}
+
+h4 {
+    font-size: var(--fourth-heading-font-size, 1.5em);
+}
+
+hr {
+    border: 0.05em solid #757192;
+}
+
+hr {
+    border: 0.05em solid #757192;
+}
+
+body > div {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#vertical-line {
+    border-left: 5px solid white;
+    height: 100vh;
+    left: 50%;
+    margin-left: -5px;
+    padding-top: 5rem;
+}
+
+.column {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    font-family: --var(--text-font-family, Arial);
+}
+
+.left { 
+    background-color: --var(--primary-background-color, White); 
+}
+.right { 
+    background-color: --var(--primary-background-color, White);
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+project-card {
+    display: inline-block;
+    flex-direction: column;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 10px;
+    margin: 5px;
+    border-radius: 8px;
+    color: var(--text-color);
+    width: 180px;
+}
+
+project-card h2 {
+    margin: 0 0 5px;
+    font-size: 16px;
+}
+
+project-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+}
+
+project-card p {
+    font-size: 12px;
+}
+
+project-card a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+}
