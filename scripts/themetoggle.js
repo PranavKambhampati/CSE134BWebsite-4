@@ -18,3 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("theme", newTheme);
     });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.body.style.visibility = "visible";
+});
