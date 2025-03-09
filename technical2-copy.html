@@ -97,7 +97,7 @@
     
 
     <!-- Note: everything is simply called a Project Card - in the future will work on separating the different types (skills, experiences, projects) -->
-    <script>
+    <!-- <script>
         const initialData = {
             electricalengineering: {
                 skills: [
@@ -121,7 +121,7 @@
                     { title: "Java", image: "/assets/technical/java.png", description: "Proficiency with the Java Programming Language and OOP.", link: "https://www.java.com/" },
                     { title: "Python", image: "/assets/python.png", description: "Proficient with Python and applying it in ML contexts.", link: "https://www.python.org/" },
                     { title: "Git", image: "/assets/technical/git.png", description: "Familiar with Git version control and using it for CI/CD Agile.", link: "https://www.github.com/" },
-                    { title: "SpringBoot", image: "/assets/technical/springboot.png", description: "Familiar with usign SpringBoot to develop WebApps with Java backend.", link: "https://spring.io/projects/spring-boot" }
+                    { title: "SpringBoot", image: "/assets/technical/springboot.png", description: "Familiar with using SpringBoot to develop WebApps with Java backend.", link: "https://spring.io/projects/spring-boot" }
 
                 ],
                 experiences: [
@@ -132,9 +132,9 @@
                 ]
             }
         };
-        
-        // Save the initialData to localStorage under the key 'projectData'
         localStorage.setItem('projectData', JSON.stringify(initialData));
+
+        localStorage.getItem('projectData');
         
         window.onload = function() {
             if (!localStorage.getItem('projectData')) {
@@ -142,7 +142,7 @@
             }
         };
         
-    </script>
+    </script> -->
     <script>
         class ProjectCard extends HTMLElement {
             constructor() {
