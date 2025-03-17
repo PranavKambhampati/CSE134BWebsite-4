@@ -235,8 +235,13 @@
                 if (xhr.readyState == XMLHttpRequest.DONE) {
                     console.log(xhr.responseText);
                     const data = JSON.parse(xhr.responseText);
+                    if (!localStorage.getItem('projectData')) {
+                        localStorage.setItem('projectData', JSON.stringify(data.record)); //write data into local storage if not already in there
+                    }
                     renderData(data.record);
                 }
+
+                
             };
             // Not sure how to have the keys be hidden =(
             xhr.open("GET",  "https://api.jsonbin.io/v3/b/67cde258ad19ca34f819410a/latest", true);
