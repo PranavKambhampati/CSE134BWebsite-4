@@ -12,3 +12,4 @@ CSS:
 
 JavaScript:
 - Loading the cards based on major/skill rather than into one container: enables loading cards into 6 different containers dynamically - improves scalability.
+- Flicker when switching pages when on light mode fixed: creates a cleaner, more refined look by applying theme before rendering page.
